@@ -1,6 +1,3 @@
-// Simulación de un motor de juego en Unity (2D)
-// Esto sería el equivalente al código C# en tus scripts de Unity.
-
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const startButton = document.getElementById('start-button');
@@ -22,14 +19,14 @@ const GAME_HEIGHT = 800;
 canvas.width = GAME_WIDTH;
 canvas.height = GAME_HEIGHT;
 
-let enemySpawnTimer = 1.5; // Tiempo en segundos para el primer enemigo
-let spawnTimeReduction = 0.01; // Reducción por cada 100 puntos
-let minSpawnTime = 0.5; // Límite inferior de tiempo de aparición
+let enemySpawnTimer = 1.5;
+let spawnTimeReduction = 0.01; 
+let minSpawnTime = 0.5;
 let lastSpawnTime = 0;
 
-// ==========================================================
-// Clases de objetos del juego (equivalentes a "prefabs")
-// ==========================================================
+// ===========================
+// Clases de objetos del juego 
+// ===========================
 
 class GameObject {
 constructor(x, y, width, height) {
@@ -55,7 +52,7 @@ class Player extends GameObject {
 constructor() {
 super(GAME_WIDTH / 2 - 25, GAME_HEIGHT - 70, 50, 50);
 this.speed = 300;
-this.fireRate = 0.3; // Segundos
+this.fireRate = 0.3; 
 this.lastShotTime = 0;
 this.health = 3;
 }
@@ -72,7 +69,7 @@ draw() {
 }
 
 update(deltaTime) {
-    // Equivalente a Input.GetAxis en Unity
+    
     if (keys['ArrowLeft'] || keys['a']) {
         this.x -= this.speed * deltaTime;
     }
@@ -101,7 +98,7 @@ class Enemy extends GameObject {
 constructor(x, y) {
 super(x, y, 40, 40);
 this.speed = Math.random() * 100 + 50;
-this.isHit = false; // Nueva propiedad para marcar si ha sido golpeado
+this.isHit = false; 
 }
 
 draw() {
@@ -136,9 +133,9 @@ update(deltaTime) {
 
 }
 
-// ==========================================================
-// Lógica de colisiones (como los colliders en Unity)
-// ==========================================================
+// ====================
+// Lógica de colisiones 
+// ====================
 
 function checkCollision(rect1, rect2) {
 return rect1.x < rect2.x + rect2.width &&
@@ -147,9 +144,9 @@ rect1.y < rect2.y + rect2.height &&
 rect1.y + rect1.height > rect2.y;
 }
 
-// ==========================================================
-// Lógica del juego principal (equivalente al GameManager)
-// ==========================================================
+// ==========================
+// Lógica del juego principal 
+// ==========================
 
 function startGame() {
 gameState = 'playing';
@@ -197,11 +194,11 @@ bullets = bullets.filter(bullet => {
     // Colisión bala-enemigo
     for (let i = 0; i < enemies.length; i++) {
         if (checkCollision(bullet.getBounds(), enemies[i].getBounds())) {
-            enemies[i].isHit = true; // Marca al enemigo para su eliminación
+            enemies[i].isHit = true; 
             score += 10;
             scoreDisplay.textContent = `Puntuación: ${score}`;
             updateDifficulty();
-            return false; // Elimina la bala
+            return false; 
         }
     }
     
@@ -244,9 +241,9 @@ messageDisplay.textContent = '¡JUEGO TERMINADO!'; Puntuación: '${score}';
 restartButton.style.display = 'block';
 }
 
-// ==========================================================
-// Gestión de eventos (teclado y táctil)
-// ==========================================================
+// ==================
+// Gestión de eventos 
+// ==================
 document.addEventListener('keydown', (e) => {
 keys[e.key] = true;
 });
