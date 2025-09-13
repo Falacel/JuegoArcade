@@ -1,0 +1,103 @@
+@import url('https://www.google.com/search?q=https://fonts.googleapis.com/css2%3Ffamily%3DPress%2BStart%2B2P%26display%3Dswap');
+
+body {
+background-color: #2c3e50;
+color: #ecf0f1;
+font-family: 'Press Start 2P', cursive;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+text-align: center;
+user-select: none;
+overflow: hidden;
+}
+
+h1 {
+font-size: 2rem;
+margin-bottom: 20px;
+color: #e67e22;
+text-shadow: 4px 4px 0 #d35400;
+}
+
+.game-container {
+border: 5px solid #bdc3c7;
+border-radius: 10px;
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+background-color: #34495e;
+position: relative;
+overflow: hidden;
+}
+
+canvas {
+display: block;
+}
+
+.ui-container {
+position: absolute;
+top: 10px;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+justify-content: space-between;
+width: 95%;
+padding: 5px 0;
+}
+
+#score-display, #health-display {
+font-size: 1rem;
+color: #ecf0f1;
+}
+
+#health-display {
+color: #e74c3c;
+}
+
+#message {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+font-size: 1.5rem;
+color: #f1c40f;
+text-shadow: 2px 2px 0 #c0392b;
+z-index: 10;
+}
+
+#start-button, #restart-button {
+padding: 15px 30px;
+font-family: 'Press Start 2P', cursive;
+font-size: 1.2rem;
+background-color: #27ae60;
+color: white;
+border: 3px solid #2ecc71;
+border-radius: 8px;
+cursor: pointer;
+transition: transform 0.2s, background-color 0.2s;
+box-shadow: 0 5px 0 #1e8449;
+margin-top: 20px;
+}
+
+#start-button:hover, #restart-button:hover {
+transform: translateY(-2px);
+background-color: #2ecc71;
+box-shadow: 0 7px 0 #27ae60;
+}
+
+#start-button:active, #restart-button:active {
+transform: translateY(3px);
+box-shadow: none;
+}
+
+#restart-button {
+background-color: #e74c3c;
+border-color: #c0392b;
+box-shadow: 0 5px 0 #c0392b;
+}
+
+#restart-button:hover {
+background-color: #c0392b;
+box-shadow: 0 7px 0 #e74c3c;
+}
