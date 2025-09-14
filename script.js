@@ -27,7 +27,6 @@ let lastSpawnTime = 0;
 // ===========================
 // Clases de objetos del juego 
 // ===========================
-
 class GameObject {
 constructor(x, y, width, height) {
 this.x = x;
@@ -81,7 +80,7 @@ update(deltaTime) {
     if (this.x + this.width > GAME_WIDTH) this.x = GAME_WIDTH - this.width;
 
     // Disparar
-    if ((keys[' '] || keys[' ']) && Date.now() / 1000 - this.lastShotTime > this.fireRate) {
+    if ((keys[' ']) && Date.now() / 1000 - this.lastShotTime > this.fireRate) {
         this.shoot();
         this.lastShotTime = Date.now() / 1000;
     }
@@ -147,7 +146,6 @@ rect1.y + rect1.height > rect2.y;
 // ==========================
 // Lógica del juego principal 
 // ==========================
-
 function startGame() {
 gameState = 'playing';
 score = 0;
@@ -169,7 +167,7 @@ enemies.push(new Enemy(x, -50));
 }
 
 function updateDifficulty() {
-const reduction = Math.floor(score / 100) * spawnTimeReduction;
+const reduction = Math.floor(score / 60) * spawnTimeReduction;
 enemySpawnTimer = Math.max(1.5 - reduction, minSpawnTime);
 }
 
@@ -237,7 +235,7 @@ function endGame() {
 gameState = 'gameOver';
 ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
 ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-messageDisplay.textContent = '¡JUEGO TERMINADO!'; Puntuación: '${score}';
+messageDisplay.textContent = '¡JUEGO TERMINADO! Puntuación: ${score}';
 restartButton.style.display = 'block';
 }
 
